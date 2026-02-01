@@ -1,7 +1,7 @@
 # Upstage-Contract-Guardian
 본 프로젝트는 사회초년생 및 부동산 계약 입문자들이 겪는 '법률 정보의 비대칭' 문제를 해결하기 위해 개발되었습니다. 복잡한 특약 사항 속에 숨겨진 독소 조항을 AI가 탐지하고, 안전 리포트를 제공합니다.
-🚀 주요 기능 (Key Features)
 
+🚀 주요 기능 (Key Features)
 지능형 문서 분석 (Document Intelligence)
 Upstage Document Parse를 사용하여 비정형 계약서 이미지(PDF)에서 표 구조와 텍스트 좌표를 완벽하게 복원합니다.
 
