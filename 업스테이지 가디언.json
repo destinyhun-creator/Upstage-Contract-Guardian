@@ -1,0 +1,932 @@
+{
+  "name": "My workflow copy 2 copy 3",
+  "nodes": [
+    {
+      "parameters": {},
+      "type": "n8n-nodes-base.manualTrigger",
+      "typeVersion": 1,
+      "position": [
+        3008,
+        1408
+      ],
+      "id": "d4086f01-1ff9-4cee-89e4-cf7f0f9ad4fa",
+      "name": "When clicking ‘Execute workflow’"
+    },
+    {
+      "parameters": {
+        "mode": "insert",
+        "qdrantCollection": {
+          "__rl": true,
+          "value": "test_db2",
+          "mode": "id"
+        },
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.vectorStoreQdrant",
+      "typeVersion": 1.3,
+      "position": [
+        3824,
+        1408
+      ],
+      "id": "0d7be672-44d8-4283-924b-fe75192c5000",
+      "name": "Qdrant Vector Store4",
+      "credentials": {
+        "qdrantApi": {
+          "id": "uCia7Lu6ZZFub672",
+          "name": "QdrantApi account"
+        }
+      }
+    },
+    {
+      "parameters": {},
+      "type": "n8n-nodes-upstage.embeddingsUpstageModel",
+      "typeVersion": 1,
+      "position": [
+        3792,
+        1568
+      ],
+      "id": "76b4b258-6163-4bdd-92f2-0144d08bd806",
+      "name": "Upstage Embed for Agent4",
+      "credentials": {
+        "upstageApi": {
+          "id": "32nbZRJ6mNpMw3qd",
+          "name": "Upstage account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "textSplittingMode": "custom",
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.documentDefaultDataLoader",
+      "typeVersion": 1.1,
+      "position": [
+        3952,
+        1568
+      ],
+      "id": "6daa5f1b-bbaa-422d-94f6-8c8248c0ed8d",
+      "name": "Default Data Loader1"
+    },
+    {
+      "parameters": {
+        "chunkOverlap": 200,
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.textSplitterRecursiveCharacterTextSplitter",
+      "typeVersion": 1,
+      "position": [
+        4032,
+        1680
+      ],
+      "id": "2f54c430-e36f-42fb-acbc-a40f7bfe0ef9",
+      "name": "Recursive Character Text Splitter1"
+    },
+    {
+      "parameters": {
+        "model": "solar-pro",
+        "options": {}
+      },
+      "type": "n8n-nodes-upstage.lmChatModelUpstage",
+      "typeVersion": 1,
+      "position": [
+        3792,
+        944
+      ],
+      "id": "440d3641-098c-4de7-9eb7-1789c61724c0",
+      "name": "Upstage Solar Chat for Agent4",
+      "credentials": {
+        "upstageApi": {
+          "id": "32nbZRJ6mNpMw3qd",
+          "name": "Upstage account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "mode": "retrieve-as-tool",
+        "toolDescription": "기술 용어, 사내 약어, 프로젝트 코드명 등의 정의나 비즈니스 맥락을 찾기 위해 사내 지식 베이스(용어집)를 검색합니다.",
+        "qdrantCollection": {
+          "__rl": true,
+          "value": "test_db",
+          "mode": "list",
+          "cachedResultName": "test_db"
+        },
+        "topK": 5,
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.vectorStoreQdrant",
+      "typeVersion": 1.3,
+      "position": [
+        3920,
+        944
+      ],
+      "id": "5fec57e7-b4fa-49a9-95b1-0ab144062551",
+      "name": "Qdrant Vector Store6",
+      "credentials": {
+        "qdrantApi": {
+          "id": "uCia7Lu6ZZFub672",
+          "name": "QdrantApi account"
+        }
+      }
+    },
+    {
+      "parameters": {},
+      "type": "n8n-nodes-upstage.embeddingsUpstageModel",
+      "typeVersion": 1,
+      "position": [
+        4000,
+        1056
+      ],
+      "id": "89f6add9-3b02-4efd-8ad6-4fc17d52e2a8",
+      "name": "Upstage Embed for Agent6",
+      "credentials": {
+        "upstageApi": {
+          "id": "32nbZRJ6mNpMw3qd",
+          "name": "Upstage account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "model": "solar-pro",
+        "options": {}
+      },
+      "type": "n8n-nodes-upstage.lmChatModelUpstage",
+      "typeVersion": 1,
+      "position": [
+        3792,
+        368
+      ],
+      "id": "531c79f3-891f-48b5-9bb9-8c9f6bc88d90",
+      "name": "Upstage Solar Chat for Agent5",
+      "credentials": {
+        "upstageApi": {
+          "id": "32nbZRJ6mNpMw3qd",
+          "name": "Upstage account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "mode": "retrieve-as-tool",
+        "toolDescription": "기술 용어, 사내 약어, 프로젝트 코드명 등의 정의나 비즈니스 맥락을 찾기 위해 사내 지식 베이스(용어집)를 검색합니다.",
+        "qdrantCollection": {
+          "__rl": true,
+          "value": "test_db",
+          "mode": "list",
+          "cachedResultName": "test_db"
+        },
+        "topK": 5,
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.vectorStoreQdrant",
+      "typeVersion": 1.3,
+      "position": [
+        3920,
+        368
+      ],
+      "id": "06aebe33-1d13-4be9-9596-922b35347e34",
+      "name": "Qdrant Vector Store7",
+      "credentials": {
+        "qdrantApi": {
+          "id": "uCia7Lu6ZZFub672",
+          "name": "QdrantApi account"
+        }
+      }
+    },
+    {
+      "parameters": {},
+      "type": "n8n-nodes-upstage.embeddingsUpstageModel",
+      "typeVersion": 1,
+      "position": [
+        4000,
+        480
+      ],
+      "id": "5d13acf4-19ec-45cf-b5f1-2b1f76ee8e6a",
+      "name": "Upstage Embed for Agent7",
+      "credentials": {
+        "upstageApi": {
+          "id": "32nbZRJ6mNpMw3qd",
+          "name": "Upstage account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "sendTo": "wnstlr2678@gmail.com",
+        "subject": "결과",
+        "message": "=<p>안녕하세요,</p> <p>AI Contract Guardian이 귀하의 문서를 분석하여 <strong>'리포트'</strong> 생성을 완료했습니다.</p> <p>아래 버튼을 클릭하여 분석 결과를 즉시 확인하고 다운로드하세요.</p> <br> <a href=\"{{ $json.pdf_url }}\"     style=\"background-color: #5c27fe; color: white; padding: 14px 24px; text-decoration: none; border-radius: 8px; font-weight: bold; font-family: sans-serif; display: inline-block;\">    📄 분석 리포트 다운로드 (PDF) </a> <br> <br> <p style=\"font-size: 13px; color: #666; line-height: 1.6;\">     ⚠️ <strong>주의:</strong> 본 리포트는 법적 효력이 없으며 참고용으로만 활용하시기 바랍니다.<br>     *링크는 보안을 위해 일정 시간 후 만료될 수 있습니다. </p> <hr style=\"border: 0; border-top: 1px solid #eee; margin: 20px 0;\"> <p style=\"font-size: 11px; color: #aaa;\">Powered by Upstage Solar & n8n Automation</p>",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.gmail",
+      "typeVersion": 2.1,
+      "position": [
+        4576,
+        784
+      ],
+      "id": "0c96dc54-430f-45f3-ba6c-a5ee8e11c190",
+      "name": "Send a message7",
+      "webhookId": "d4423c80-ac1d-4f38-86a9-7decca78e9be",
+      "credentials": {
+        "gmailOAuth2": {
+          "id": "kOiVGoy7LbpHVjgM",
+          "name": "Gmail account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "sendTo": "wnstlr2678@gmail.com",
+        "subject": "결과",
+        "message": "=<p>안녕하세요,</p> <p>AI Contract Guardian이 귀하의 임대차 계약서를 분석하여 <strong>'안전 진단 리포트'</strong> 생성을 완료했습니다.</p> <p>아래 버튼을 클릭하여 분석 결과를 즉시 확인하고 다운로드하세요.</p> <br> <a href=\"{{ $json.pdf_url }}\"     style=\"background-color: #5c27fe; color: white; padding: 14px 24px; text-decoration: none; border-radius: 8px; font-weight: bold; font-family: sans-serif; display: inline-block;\">    📄 분석 리포트 다운로드 (PDF) </a> <br> <br> <p style=\"font-size: 13px; color: #666; line-height: 1.6;\">     ⚠️ <strong>주의:</strong> 본 리포트는 법적 효력이 없으며 참고용으로만 활용하시기 바랍니다.<br>     *링크는 보안을 위해 일정 시간 후 만료될 수 있습니다. </p> <hr style=\"border: 0; border-top: 1px solid #eee; margin: 20px 0;\"> <p style=\"font-size: 11px; color: #aaa;\">Powered by Upstage Solar & n8n Automation</p>",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.gmail",
+      "typeVersion": 2.1,
+      "position": [
+        4560,
+        208
+      ],
+      "id": "d5f2ac0b-c72e-440f-a5b3-87e87c04f852",
+      "name": "Send a message8",
+      "webhookId": "dfe56afa-ac52-49e5-82d5-52f940c80308",
+      "credentials": {
+        "gmailOAuth2": {
+          "id": "kOiVGoy7LbpHVjgM",
+          "name": "Gmail account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "html_content": "={{ $json.html }}"
+      },
+      "type": "n8n-nodes-htmlcsstopdf.htmlcsstopdf",
+      "typeVersion": 1,
+      "position": [
+        4368,
+        208
+      ],
+      "id": "2b077f9e-2310-400f-a309-887156713f24",
+      "name": "HTML to PDF6",
+      "credentials": {
+        "htmlcsstopdfApi": {
+          "id": "jkZEQLtF02Oruw8t",
+          "name": "HTML to PDF account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "pollTimes": {
+          "item": [
+            {
+              "mode": "everyMinute"
+            }
+          ]
+        },
+        "triggerOn": "specificFolder",
+        "folderToWatch": {
+          "__rl": true,
+          "value": "1ijJho7RilQV1-m1h3ApAOkM0yC7WsYBN",
+          "mode": "list",
+          "cachedResultName": "n8n-hackathon2",
+          "cachedResultUrl": "https://drive.google.com/drive/folders/1ijJho7RilQV1-m1h3ApAOkM0yC7WsYBN"
+        },
+        "event": "fileCreated",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.googleDriveTrigger",
+      "typeVersion": 1,
+      "position": [
+        2672,
+        496
+      ],
+      "id": "b7c7e084-5880-4b2a-b3cf-1b2bb5a3ea4b",
+      "name": "전/월세 계약서 파일 업로드",
+      "credentials": {
+        "googleDriveOAuth2Api": {
+          "id": "wkAvXPIJ0RAcPVw8",
+          "name": "Google Drive account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "operation": "download",
+        "fileId": {
+          "__rl": true,
+          "value": "={{ $json.id }}",
+          "mode": "id"
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.googleDrive",
+      "typeVersion": 3,
+      "position": [
+        2864,
+        496
+      ],
+      "id": "56c47a8f-8568-4d8a-a33d-75eadddd3303",
+      "name": "전/월세 계약서 다운",
+      "credentials": {
+        "googleDriveOAuth2Api": {
+          "id": "wkAvXPIJ0RAcPVw8",
+          "name": "Google Drive account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "ocr": "force",
+        "merge_multipage_tables": true
+      },
+      "type": "n8n-nodes-upstage.documentParsingUpstage",
+      "typeVersion": 1,
+      "position": [
+        3056,
+        496
+      ],
+      "id": "4a6df25e-724e-47a9-a617-41f077a6567f",
+      "name": "문서판단을 위한 파싱",
+      "credentials": {
+        "upstageApi": {
+          "id": "32nbZRJ6mNpMw3qd",
+          "name": "Upstage account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "model": "solar-pro",
+        "messages": {
+          "message": [
+            {
+              "role": "assistant",
+              "content": "=당신은 꼼꼼한 '부동산 문서 분류 AI'입니다.\n사용자가 입력한 [문서 내용]을 분석하여, 이 문서가 **'주택 임대차 계약서(전세 또는 월세)'**인지 판단하세요.\n\n반드시 아래 **JSON 형식**으로만 답변해야 합니다. (Markdown, 설명 등 사족 금지)\n\n[판단 기준]\n1. 문서 제목이나 내용에 '임대차', '전세', '월세', '부동산' 관련 키워드가 포함되어 있는가?\n2. 임대인/임차인, 보증금, 계약기간 등의 핵심 요소가 있는가?\n3. 상가나 토지가 아닌 '주거용(주택, 아파트, 빌라, 오피스텔)' 계약인가?\n\n[출력 형식]\n{\n  \"is_target\": true,\n  \"reason\": \"주택 임대차 표준계약서 양식과 일치하며, 전세 보증금 및 계약 기간이 명시됨\"\n}\n\n* 만약 주택 임대차 계약서가 아니라면(상가, 영수증, 등기부등본 등), \"is_target\": false 로 출력하세요."
+            },
+            {
+              "content": "={{ $json.content.html }}"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-upstage.lmChatUpstage",
+      "typeVersion": 1,
+      "position": [
+        3232,
+        496
+      ],
+      "id": "6be8f743-ccdb-4435-981c-6addefe851c6",
+      "name": "문서 종류 판단 에이전트",
+      "credentials": {
+        "upstageApi": {
+          "id": "32nbZRJ6mNpMw3qd",
+          "name": "Upstage account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "rules": {
+          "values": [
+            {
+              "conditions": {
+                "options": {
+                  "caseSensitive": true,
+                  "leftValue": "",
+                  "typeValidation": "strict",
+                  "version": 2
+                },
+                "conditions": [
+                  {
+                    "id": "df7674d0-57c8-45a3-be5e-a0628a54cd2d",
+                    "leftValue": "={{JSON.parse($json.content).is_target }}",
+                    "rightValue": "true",
+                    "operator": {
+                      "type": "boolean",
+                      "operation": "true",
+                      "singleValue": true
+                    }
+                  }
+                ],
+                "combinator": "and"
+              }
+            },
+            {
+              "conditions": {
+                "options": {
+                  "caseSensitive": true,
+                  "leftValue": "",
+                  "typeValidation": "strict",
+                  "version": 2
+                },
+                "conditions": [
+                  {
+                    "id": "5886b337-d335-465c-9ab4-ca9359d95295",
+                    "leftValue": "={{ JSON.parse($json.content).is_target }}",
+                    "rightValue": "false",
+                    "operator": {
+                      "type": "boolean",
+                      "operation": "false",
+                      "singleValue": true
+                    }
+                  }
+                ],
+                "combinator": "and"
+              }
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.switch",
+      "typeVersion": 3.3,
+      "position": [
+        3408,
+        496
+      ],
+      "id": "924763c2-e0bb-48a6-83c4-da176f03117b",
+      "name": "문서 갈림길"
+    },
+    {
+      "parameters": {
+        "jsCode": "// 1. 현재 노드로 들어온 데이터 (Switch를 통과한 흐름)\nconst items = $input.all();\n\n// 2. ★핵심★: 저~ 앞에 있는 '파싱 노드'의 원본 데이터를 직접 소환합니다.\n// 주의: 아래 노드 이름이 실제 워크플로우 화면의 이름과 띄어쓰기까지 똑같아야 합니다!\nconst sourceData = $('문서판단을 위한 파싱').all(); \n\n// 민감정보 마스킹 함수 (이건 그대로 유지)\nfunction maskSensitive(text) {\n  if (!text || typeof text !== 'string') return text;\n  let result = text;\n\n  // 이메일 마스킹\n  result = result.replace(/([0-9a-zA-Z._%+-])([0-9a-zA-Z._%+-]*)(@[\\w.-]+\\.\\w+)/g, \n    (m, f, mid, d) => f + '****' + d);\n  \n  // 전화번호 마스킹\n  result = result.replace(/01[0-9][-\\s.]?\\d{3,4}[-\\s.]?\\d{4}/g, (match) => {\n    const digits = match.replace(/\\D/g, '');\n    if (digits.length < 10) return match;\n    return `${digits.slice(0,3)}-${'*'.repeat(digits.length-7)}-${digits.slice(-4)}`;\n  });\n  \n  // 주민번호 마스킹\n  result = result.replace(/(\\d{6})[-\\s]?(\\d{7})/g, (m, f, b) => `${f}-*******`);\n  \n  return result;\n}\n\n// 3. 데이터 합치기 및 마스킹 실행\nfor (let i = 0; i < items.length; i++) {\n  \n  // 파싱 노드에서 가져온 원본 HTML\n  // (만약 순서가 꼬였을 경우를 대비해 안전하게 첫 번째 데이터라도 가져오게 설정)\n  const originalHtml = sourceData[i]?.json?.content?.html || sourceData[0]?.json?.content?.html;\n\n  if (originalHtml) {\n    // 가져온 HTML을 마스킹 처리\n    const maskedHtml = maskSensitive(originalHtml);\n\n    // 4. 현재 아이템에 'content' 객체와 'html'을 다시 심어줍니다. (심폐소생술 성공!)\n    items[i].json.content = { \n      html: maskedHtml \n    };\n  } else {\n    // 혹시라도 데이터를 못 가져왔으면 에러 로그 남김\n    items[i].json.error = \"HTML 원본을 찾을 수 없습니다. '문서판단을 위한 파싱' 노드가 실행되었는지 확인하세요.\";\n  }\n}\n\nreturn items;"
+      },
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        3664,
+        208
+      ],
+      "id": "6c2978c4-9253-426c-8a51-dfcf63368eea",
+      "name": "전/월세 관련 문서 민감정보 마스킹 및 처리"
+    },
+    {
+      "parameters": {
+        "jsCode": "// 1. 현재 노드로 들어온 데이터 (Switch를 통과한 흐름)\nconst items = $input.all();\n\n// 2. ★핵심★: 저~ 앞에 있는 '파싱 노드'의 원본 데이터를 직접 소환합니다.\n// 주의: 아래 노드 이름이 실제 워크플로우 화면의 이름과 띄어쓰기까지 똑같아야 합니다!\nconst sourceData = $('문서판단을 위한 파싱').all(); \n\n// 민감정보 마스킹 함수 (이건 그대로 유지)\nfunction maskSensitive(text) {\n  if (!text || typeof text !== 'string') return text;\n  let result = text;\n\n  // 이메일 마스킹\n  result = result.replace(/([0-9a-zA-Z._%+-])([0-9a-zA-Z._%+-]*)(@[\\w.-]+\\.\\w+)/g, \n    (m, f, mid, d) => f + '****' + d);\n  \n  // 전화번호 마스킹\n  result = result.replace(/01[0-9][-\\s.]?\\d{3,4}[-\\s.]?\\d{4}/g, (match) => {\n    const digits = match.replace(/\\D/g, '');\n    if (digits.length < 10) return match;\n    return `${digits.slice(0,3)}-${'*'.repeat(digits.length-7)}-${digits.slice(-4)}`;\n  });\n  \n  // 주민번호 마스킹\n  result = result.replace(/(\\d{6})[-\\s]?(\\d{7})/g, (m, f, b) => `${f}-*******`);\n  \n  return result;\n}\n\n// 3. 데이터 합치기 및 마스킹 실행\nfor (let i = 0; i < items.length; i++) {\n  \n  // 파싱 노드에서 가져온 원본 HTML\n  // (만약 순서가 꼬였을 경우를 대비해 안전하게 첫 번째 데이터라도 가져오게 설정)\n  const originalHtml = sourceData[i]?.json?.content?.html || sourceData[0]?.json?.content?.html;\n\n  if (originalHtml) {\n    // 가져온 HTML을 마스킹 처리\n    const maskedHtml = maskSensitive(originalHtml);\n\n    // 4. 현재 아이템에 'content' 객체와 'html'을 다시 심어줍니다. (심폐소생술 성공!)\n    items[i].json.content = { \n      html: maskedHtml \n    };\n  } else {\n    // 혹시라도 데이터를 못 가져왔으면 에러 로그 남김\n    items[i].json.error = \"HTML 원본을 찾을 수 없습니다. '문서판단을 위한 파싱' 노드가 실행되었는지 확인하세요.\";\n  }\n}\n\nreturn items;"
+      },
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        3664,
+        784
+      ],
+      "id": "d6048a70-0cc9-4a81-868e-517acd8d191a",
+      "name": "기타 문서 마스킹 및 처리"
+    },
+    {
+      "parameters": {
+        "resource": "fileFolder",
+        "queryString": "주택임대차",
+        "filter": {},
+        "options": {}
+      },
+      "type": "n8n-nodes-base.googleDrive",
+      "typeVersion": 3,
+      "position": [
+        3216,
+        1408
+      ],
+      "id": "190faae5-2103-4bd0-8d08-e12d70070694",
+      "name": "구글 드라이브 n8n-hackaton-db2에서 필요 파일 모두 찾기",
+      "credentials": {
+        "googleDriveOAuth2Api": {
+          "id": "wkAvXPIJ0RAcPVw8",
+          "name": "Google Drive account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "operation": "download",
+        "fileId": {
+          "__rl": true,
+          "value": "={{ $json.id }}",
+          "mode": "id"
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.googleDrive",
+      "typeVersion": 3,
+      "position": [
+        3424,
+        1408
+      ],
+      "id": "d9177da5-11d5-4321-82ae-e254b860543a",
+      "name": "파일 다운",
+      "credentials": {
+        "googleDriveOAuth2Api": {
+          "id": "wkAvXPIJ0RAcPVw8",
+          "name": "Google Drive account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "merge_multipage_tables": true,
+        "outputFormats": [
+          "text"
+        ]
+      },
+      "type": "n8n-nodes-upstage.documentParsingUpstage",
+      "typeVersion": 1,
+      "position": [
+        3616,
+        1408
+      ],
+      "id": "2868ed12-3f06-4c4d-833b-24c0921d5768",
+      "name": "문서 파싱",
+      "credentials": {
+        "upstageApi": {
+          "id": "32nbZRJ6mNpMw3qd",
+          "name": "Upstage account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "html_content": "={{ $json.html }}"
+      },
+      "type": "n8n-nodes-htmlcsstopdf.htmlcsstopdf",
+      "typeVersion": 1,
+      "position": [
+        4368,
+        784
+      ],
+      "id": "e6b01da3-f9d6-4464-8c41-f4ddcb9ed023",
+      "name": "HTML to PDF",
+      "credentials": {
+        "htmlcsstopdfApi": {
+          "id": "jkZEQLtF02Oruw8t",
+          "name": "HTML to PDF account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "promptType": "define",
+        "text": "=[Role]\n당신은 대한민국 최고의 '주택 임대차 계약서 분석 및 독소조항 탐지 전문가'입니다.\n단순히 문서를 요약하는 것이 아니라, 임차인의 재산을 지키기 위해 계약서 구석구석에 숨겨진 '법적 함정'을 찾아내고 싸워주는 역할을 합니다.\n단, 억지스러운 위험 조장(Over-warning)을 하지 않으며, 안전한 조항은 확실하게 안전하다고 판단합니다.\n\n[Input Data]\n아래는 사용자가 업로드한 계약서의 내용입니다. (HTML 구조로 제공됨)\n- 문서 내용: {{ $json.content.html }}\n\n[Task Instructions]\n1. **HTML 구조 정밀 분석:** <table> 태그 안에 숨겨진 '특약 사항'을 최우선으로 분석하세요.\n2. **RAG Cross-Check:** 연결된 RAG Tool(주택임대차보호법, 표준계약서)과 대조하여 법적 효력을 검토하세요.\n3. **Context Analysis (문맥 파악):** 단순히 키워드('근저당' 등)만 보고 위험하다고 판단하지 말고, 문장의 끝맺음('설정한다' vs '설정하지 않는다')을 정확히 해석하세요.\n4. **Actionable Advice:** 발견된 독소조항이 있을 경우에만 수정 요청 멘트를 작성하세요.\n\n[🚨 핵심 판단 기준: 문맥 파악 (매우 중요)]\n1. **안전 조항(Safe)으로 분류해야 하는 경우:**\n   - 문장이 임대인의 권리를 **제한**하거나 **금지**하는 경우.\n   - 예: \"임대인은 잔금일 다음 날까지 담보권을 **설정할 수 없다**.\"\n   - 예: \"위반 시 계약을 **즉시 해지하고 손해를 배상한다**.\"\n   - 예: \"장기수선충당금은 임대인이 **부담한다**.\"\n   - 👉 **이런 조항들은 '위험'이 아니라 '✅ 모범적인 안전 장치'로 칭찬해야 합니다.**\n\n2. **위험 조항(Danger)으로 분류해야 하는 경우:**\n   - 임차인에게 불리한 내용을 **강요**하거나 권리를 **포기**시키는 경우.\n   - 예: \"임차인은 이에 대해 **이의를 제기하지 않는다**.\"\n   - 예: \"임대인이 변경되어도 **승계에 동의한다**.\"\n   - 예: \"모든 수선 비용은 **임차인이 부담한다**.\"\n\n3. **가정법(Hypothesis) 금지:**\n   - \"이 안전 조항이 나중에 삭제된다면 위험하다\"와 같은 **불필요한 가정**을 절대 하지 마십시오.\n   - 현재 적혀 있는 텍스트가 안전하다면, 그것은 안전한 것입니다.\n\n[Output Format]\n반드시 아래 Markdown 형식을 엄수하여 출력하세요.\n\n---\n\n## 🚨 전세 계약서 정밀 진단 리포트\n\n### 1. 핵심 독소 조항 (Red Flags)\n*(위험한 조항이 발견된 경우에만 작성. 없으면 \"✅ 발견된 독소조항이 없습니다. 임차인 보호 특약이 잘 작성된 안전한 계약서입니다.\"라고 출력)*\n\n**(1) 🔴 [조항 이름 또는 요약]**\n- **위험한 이유:** (초등학생도 이해할 수 있게 설명)\n- **법적 근거:** (RAG 검색 결과 인용)\n\n**(2) 🟠 [조항 이름 또는 요약]**\n- ...\n\n### 2. 종합 위험도 평가\n- **등급:** (🚨 위험 / 🟠 주의 / 🟢 안전 중 택1)\n- **총평:** (현재 계약의 상태를 2문장으로 요약. 안전한 경우 \"필수 방어 특약이 포함되어 있습니다\"라고 언급)\n\n### 3. 집주인/중개사 대응 가이드 (복사해서 쓰세요)\n*(위험 등급이 '안전'일 경우, \"수정 요청할 사항이 없습니다. 안심하고 계약하셔도 좋습니다.\"라고 출력)*\n> **[문자/카톡 발송용]**\n> \"사장님, 계약서 검토해봤는데 몇 가지 수정 부탁드립니다.\n> (여기부터 수정 요청 멘트 작성)\"\n\n---\n\n[Constraints]\n- 입력된 문서에 민감정보(주민번호 등)가 마스킹(`*******`)되어 있어도, 문맥을 파악하여 분석을 진행하세요.\n- 사실을 과장하거나 미래의 불확실한 상황을 근거로 위험하다고 하지 마세요.\n- 말투는 냉철하고 객관적인 전문가 톤을 유지하세요.",
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.agent",
+      "typeVersion": 3,
+      "position": [
+        3840,
+        208
+      ],
+      "id": "7ae0e6ce-bd03-4692-8178-ea5849de42ce",
+      "name": "주택 임대차 계약서 분석 에이전트"
+    },
+    {
+      "parameters": {
+        "promptType": "define",
+        "text": "=[역할]\n당신은 \"AI 계약서 가디언\" 서비스의 안내 어시스턴트입니다.\n사용자가 문서를 잘못 업로드했을 때, 당황하지 않도록\n친절하고 직관적인 안내를 제공하는 것이 역할입니다.\n\n[지시사항]\n아래 content는 \"부동산 관련 문서가 아닐 때\"의 결과입니다.\n사용자가 어떤 문서를 업로드했는지 추정하고,\n전월세(임대차) 계약서를 올릴 때 무엇을 참고해야 하는지\n명확하고 친절하게 설명해주세요.\n\n절대 사용자를 비난하거나 실수로 몰아가지 말고,\n\"이해하기 쉬운 힌트\" 중심으로 작성하세요.\n\n---\n\n[아래 정보를 읽고 요약+안내를 생성하세요]\n\n{{ $json.content }}\n\n---\n\n[출력 형식]\n\n### 📄 업로드된 문서 분석 결과\n- 문서 종류(추정):  \n  → AI가 판단한 문서 유형 한 줄\n\n### ❌ 부동산 계약서는 아닙니다\n문서 자체는 잘못된 것이 아니며,\n부동산 계약서가 아닌 이유를 1~2줄로 간단히 설명하세요.\n\n### 🏠 전월세(임대차) 계약서가 맞으려면 이런 요소가 있어야 합니다\n아주 초보자도 이해하기 쉬운 표현으로,\n임대차 계약서에서 반드시 포함되는 핵심 항목 5가지 작성:\n\n- 임대인/임차인 명시\n- 보증금, 월세 금액\n- 계약 기간(입주일, 계약 종료일)\n- 주소(임대 대상 건물/호수)\n- 특약 사항(중요 조건들)\n\n### 🔍 이런 형식의 문서를 업로드해보세요\n- \"주택임대차표준계약서\" 양식  \n- 부동산에서 받은 전세/월세 계약서 스캔본  \n- 중개인 도장과 날짜가 찍힌 계약서 사진\n\n### 🧭 다음에 해야 할 행동(사용자 가이드)\n- 어떤 파일을 올려야 하는지 한 줄 요약  \n- 혹은 다시 업로드를 유도하는 안내문\n\n톤: 가볍고 따뜻하고 이해하기 쉬운 말투.\n필요하면 이모지 사용 가능 😊\n기술적인 표현 사용 금지.\n",
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.agent",
+      "typeVersion": 3,
+      "position": [
+        3840,
+        784
+      ],
+      "id": "031b046a-6eb8-4b33-a84f-513d7eb44f64",
+      "name": "기타 문서 분석 에이전트"
+    },
+    {
+      "parameters": {
+        "jsCode": "// 1. AI Agent의 출력값 가져오기\nlet rawText = $json.output || $json.text || $input.all()[0].json.output || \"\";\n\n/* ----------------------------------------------------------\n   ✅ [섹션 순서 재정렬 기능 추가 - 나머지 내용은 절대 삭제 X]\n   - 종합 위험도 평가 → 맨 위로\n   - 핵심 독소 조항 → 두 번째로\n   - 나머지 섹션은 원래 순서 그대로 유지\n---------------------------------------------------------- */\n\nconst sectionRegex = /###\\s*(.*?)\\n([\\s\\S]*?)(?=###|$)/g;\n\nlet risk = \"\";\nlet red = \"\";\nlet others = \"\";\n\nlet match;\nwhile ((match = sectionRegex.exec(rawText)) !== null) {\n  const title = match[1].trim();\n  const body = match[2];\n\n  if (title.includes(\"종합 위험도 평가\")) {\n    risk = `### 1. 종합 위험도 평가\\n${body}`;\n  } \n  else if (title.includes(\"핵심 독소 조항\")) {\n    red = `### 2. 핵심 독소 조항 (Red Flags)\\n${body}`;\n  } \n  else {\n    others += `### ${title}\\n${body}\\n`;\n  }\n}\n\n// 새로운 순서로 rawText 재생성\nif (risk && red) {\n  rawText = `${risk}\\n\\n${red}\\n\\n${others}`;\n}\n/* ---------------------------------------------------------- */\n\n\n// -------------------------------\n// 🧹 텍스트 정제 (Markdown → HTML 변환)\n// -------------------------------\nlet cleaned = rawText\n  .replace(/\\\\/g, '')              \n  .replace(/\\[/g, '')              \n  .replace(/\\]/g, '')\n  .replace(/\\#\\#\\# (.*?)(?=<|$)/g, \"<div class='section-title'>$1</div>\")\n  .replace(/\\#\\# (.*?)(?=<|$)/g, \"<div class='header-sub'>$1</div>\")\n  .replace(/\\*\\*(.*?)\\*\\*/g, \"<strong>$1</strong>\")\n  .replace(/\\n{3,}/g, \"<br><br>\")\n  .replace(/\\n/g, \"<br>\");\n\ncleaned = cleaned.replace(/(\\d+)\\.\\s*(.*?)(?=(?:\\d+\\.)|<br>|$)/gs, (_, num, text) => {\n  return `<div class=\"list-item\"><span class=\"num\">${num}.</span> ${text.trim()}</div>`;\n});\n\n// -------------------------------\n// ✨ HTML 템플릿 (원본 그대로 유지)\n// -------------------------------\nconst htmlTemplate = `\n<!DOCTYPE html>\n<html lang=\"ko\">\n<head>\n  <meta charset=\"UTF-8\" />\n  <title>AI 계약서 분석 리포트</title>\n  <style>\n    @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;600;700&display=swap');\n    \n    body {\n      margin: 0;\n      padding: 40px;\n      background: #f5f7fb;\n      font-family: 'Noto Sans KR', sans-serif;\n      color: #333;\n      line-height: 1.6;\n    }\n\n    .wrap {\n      background: #fff;\n      padding: 50px;\n      border-radius: 15px;\n      box-shadow: 0 5px 20px rgba(0,0,0,0.05);\n      max-width: 800px;\n      margin: 0 auto;\n    }\n\n    .header-area {\n      border-bottom: 2px solid #eee;\n      padding-bottom: 20px;\n      margin-bottom: 30px;\n    }\n    .main-title {\n      font-size: 28px;\n      font-weight: 700;\n      color: #111;\n      display: flex;\n      align-items: center;\n      gap: 10px;\n    }\n\n    .section-title {\n      font-size: 20px;\n      font-weight: 700;\n      color: #4F8EF7;\n      margin-top: 35px;\n      margin-bottom: 15px;\n      padding-left: 10px;\n      border-left: 4px solid #4F8EF7;\n    }\n\n    .header-sub {\n      font-size: 16px;\n      font-weight: 600;\n      color: #555;\n      margin-top: 20px;\n      margin-bottom: 10px;\n    }\n\n    .list-item {\n      background: #F8F9FA;\n      padding: 12px 15px;\n      border-radius: 8px;\n      margin-bottom: 10px;\n      font-size: 14px;\n    }\n    .num { color: #4F8EF7; font-weight: 700; margin-right: 5px; }\n    \n    strong { color: #D93025; }\n\n    .footer {\n      margin-top: 50px;\n      padding-top: 20px;\n      border-top: 1px solid #eee;\n      font-size: 12px;\n      color: #888;\n      text-align: center;\n    }\n    .legal {\n      background: #fdfdfd;\n      border: 1px solid #eee;\n      padding: 15px;\n      border-radius: 8px;\n      font-size: 12px;\n      color: #666;\n      margin-top: 30px;\n    }\n  </style>\n</head>\n<body>\n\n  <div class=\"wrap\">\n    \n    <div class=\"header-area\">\n      <div class=\"main-title\">\n        🤖 AI 전월세 계약서 안전 리포트\n      </div>\n      <p style=\"color:#666; font-size:14px; margin-top:5px;\">\n        Upstage Solar & Document Parse가 분석한 결과입니다.\n      </p>\n    </div>\n\n    <div class=\"content-body\">\n      ${cleaned}\n    </div>\n\n    <div class=\"legal\">\n      <b>⚖️ 법적 유의사항</b><br>\n      본 리포트는 AI 자동 분석 결과이며 법적 효력이 없습니다. \n      실제 계약 진행 시 반드시 공인중개사 및 법률 전문가의 최종 검토를 받으시기 바랍니다.\n      당사는 본 분석 결과에 따른 손해에 대해 법적 책임을 지지 않습니다.\n    </div>\n\n    <div class=\"footer\">\n      Powered by <b>Upstage Solar</b> | Generated via <b>n8n</b>\n    </div>\n\n  </div>\n\n</body>\n</html>\n`;\n\nreturn [\n  {\n    json: {\n      html: htmlTemplate,\n      message: \"✅ 전체 섹션 유지 + 1·2번 위치만 재정렬 완료\"\n    },\n    binary: {\n      data: {\n        data: Buffer.from(htmlTemplate).toString(\"base64\"),\n        mimeType: \"text/html\",\n        fileExtension: \"html\",\n        fileName: \"contract_report.html\",\n      },\n    },\n  },\n];\n"
+      },
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        4176,
+        208
+      ],
+      "id": "8dfea98a-3f44-45c9-90fe-a2066b916a6e",
+      "name": "시각화 및 정제"
+    },
+    {
+      "parameters": {
+        "jsCode": "const rawText = `업로드된 문서 분석 결과 - ❌ 부동산 계약서는 아닙니다\n\n1. 집 주인과 세입자 이름 - \"임대인\"과 \"임차인\" 이름을 정확히 적어야 해요!\n\n2. 보증금과 월세 금액 - \"얼마를 걸고, 매달 얼마씩 낼지\" 꼭 표시되어야 합니다.\n\n3. 계약 기간 (시작일 ~종료일) - \"언제부터 언제까지\" 살 수 있는지 날짜가 있어야 해요.\n\n4. 집 주소 (번지, 동/호수) - \"서울 00구 00동 00호\"처럼 정학한 주소 필수입니다!\n\n5. 특별 약속 사항 - \"반려동물 가능 여부\", \"수리 조건\" 등 중요한 추가 약속을 정해야 합니다. ##`; // 원본 이미지에서 텍스트를 추출하여 rawText를 직접 정의\n\n// ------------------------------------------------------------\n// ⭐ 1. 번호 항목 깨짐 방지용 절대 규칙 (핵심 부분) - 수정된 부분 포함\n// ------------------------------------------------------------\n\nlet fixed = rawText;\n\n// (1) \"1.\\n내용\" → \"1. 내용\" (가장 강력한 수정: 번호와 내용 사이의 모든 공백, 줄 바꿈 제거)\n// 이 정규식은 '1.\\n\\n집 주인...' 형태를 '1. 집 주인...'으로 만듭니다.\nfixed = fixed.replace(/(\\d+)\\.\\s*[\\r\\n\\s]+(\\S)/gs, \"$1. $2\");\n\n// (2) \"1.\\n내용\" → \"1. 내용\" (단일 줄 바꿈 처리)\nfixed = fixed.replace(/(\\d+)\\.\\s*\\n\\s*(\\S)/g, \"$1. $2\");\n\n// (3) \"1.      내용\" → \"1. 내용\"\nfixed = fixed.replace(/(\\d+)\\.\\s+(\\S)/g, \"$1. $2\");\n\n// ------------------------------------------------------------\n// ⭐ 2. 기본 정제\n// ------------------------------------------------------------\nlet cleaned = fixed\n  .replace(/\\\\/g, '')\n  .replace(/\\[/g, '')\n  .replace(/\\]/g, '')\n  .replace(/\\n{3,}/g, \"</p><div class='divider'></div><p>\")\n  .replace(/\\n{2,}/g, \"</p><p>\")\n  .replace(/\\n/g, \"<br>\")\n  .replace(/\\*\\*(.*?)\\*\\*/g, \"<strong>$1</strong>\")\n  .replace(/\\# (.*?)(?=<|$)/g, \"<h3>$1</h3>\")\n  .replace(/##/g, \"\"); // 불필요한 ## 제거\n\n// 🔥 번호 라인 반복 매칭 (리스트 항목으로 변환)\n// <br> 태그를 제거하고 목록 내용을 캡처하도록 수정\ncleaned = cleaned.replace(/(\\d+)\\.\\s+(.+?)(?=(\\d+\\.)|$)/gs, (_, num, text) => {\n  // 항목 내용 내의 불필요한 <br> 태그를 공백으로 치환하거나 제거 (이미지 형태에 따라)\n  const content = text.trim().replace(/<br>/g, ' '); // <br>을 공백으로 치환하여 한 줄로 만듦\n  return `<li><span class=\"num\">${num}.</span> ${content}</li>`;\n});\n\n// 🔥 빈 번호 줄 제거 (예: \"1.<br>\" 같은 것)\ncleaned = cleaned.replace(/<li><span class=\"num\">\\d+\\.<\\/span>\\s*<\\/li>/g, \"\");\n\n// 리스트 감싸기\nif (cleaned.includes(\"<li>\")) {\n  cleaned = `<ul class=\"contract-list\">${cleaned}</ul>`;\n}\n\n// ------------------------------------------------------------\n// ⭐ 3. HTML 템플릿 (기존 디자인 유지)\n// ------------------------------------------------------------\nconst htmlTemplate = `\n<!DOCTYPE html>\n<html lang=\"ko\">\n<head>\n  <meta charset=\"UTF-8\" />\n  <title>AI에이전트를 통해 나온 결과</title>\n  <style>\n    @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;700&display=swap');\n    body {\n      background: #f3f6fc;\n      font-family: 'Noto Sans KR', sans-serif;\n      color: #1f1f1f;\n      margin: 0;\n      padding: 70px 0;\n    }\n    .card {\n      background: #ffffff;\n      max-width: 850px;\n      margin: 0 auto;\n      padding: 70px 80px;\n      border-radius: 20px;\n      box-shadow: 0 12px 30px rgba(0,0,0,0.07);\n      line-height: 1.9;\n      border-top: 6px solid #4F8EF7;\n    }\n    h1 {\n      font-size: 28px;\n      font-weight: 700;\n      color: #111;\n      display: flex;\n      align-items: center;\n      gap: 12px;\n      margin-bottom: 35px;\n    }\n    h1::before {\n      content: \"🤖\";\n      font-size: 30px;\n    }\n    p {\n      font-size: 17px;\n      margin: 20px 0;\n      color: #333;\n      word-break: keep-all;\n    }\n    ul.contract-list { /* 리스트에 클래스 추가 */\n      list-style: none;\n      padding: 0;\n      margin: 35px 0;\n    }\n    li {\n      margin: 16px 0;\n      padding: 10px 14px;\n      background: #f9fbff;\n      border-radius: 10px;\n      border-left: 4px solid #4F8EF7;\n      box-shadow: 0 1px 3px rgba(0,0,0,0.05);\n      line-height: 1.8;\n    }\n    .num {\n      font-weight: 700;\n      color: #4F8EF7;\n      margin-right: 8px;\n    }\n    strong {\n      color: #4F8EF7;\n      font-weight: 600;\n    }\n    .divider {\n      border-top: 1px dashed #ddd;\n      margin: 35px 0;\n    }\n    h3 {\n      font-size: 20px;\n      color: #222;\n      border-left: 5px solid #4F8EF7;\n      padding-left: 12px;\n      margin-top: 40px;\n      margin-bottom: 15px;\n    }\n    .footer {\n      text-align: center;\n      font-size: 14px;\n      color: #888;\n      margin-top: 60px;\n      padding-top: 25px;\n      border-top: 1px solid #eee;\n    }\n    /* 항목의 첫 번째 네모칸(p 태그) 스타일을 명시적으로 조정 */\n    .card p:first-of-type {\n        margin-top: 0;\n    }\n    .card p:last-of-type {\n        margin-bottom: 0;\n    }\n  </style>\n</head>\n<body>\n  <div class=\"card\">\n    <h1>AI에이전트를 통해 나온 결과</h1>\n    <p>${cleaned}</p>\n    <div class=\"footer\">본 결과물은 n8n + Solar Pro AI Agent에 의해 자동 생성되었습니다.</div>\n  </div>\n</body>\n</html>\n`;\n\nreturn [\n  {\n    json: {\n      html: htmlTemplate,\n      message: \"성공\"\n    },\n    binary: {\n      data: {\n        data: Buffer.from(htmlTemplate).toString(\"base64\"),\n        mimeType: \"text/html\",\n        fileExtension: \"html\",\n        fileName: \"contract_report.html\",\n      },\n    },\n  },\n];"
+      },
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        4176,
+        784
+      ],
+      "id": "8b306e4a-2c15-4cb1-a30e-cfd4d376d396",
+      "name": "시각화 및 정제1"
+    }
+  ],
+  "pinData": {},
+  "connections": {
+    "When clicking ‘Execute workflow’": {
+      "main": [
+        [
+          {
+            "node": "구글 드라이브 n8n-hackaton-db2에서 필요 파일 모두 찾기",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Upstage Embed for Agent4": {
+      "ai_embedding": [
+        [
+          {
+            "node": "Qdrant Vector Store4",
+            "type": "ai_embedding",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Default Data Loader1": {
+      "ai_document": [
+        [
+          {
+            "node": "Qdrant Vector Store4",
+            "type": "ai_document",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Recursive Character Text Splitter1": {
+      "ai_textSplitter": [
+        [
+          {
+            "node": "Default Data Loader1",
+            "type": "ai_textSplitter",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Upstage Solar Chat for Agent4": {
+      "ai_languageModel": [
+        [
+          {
+            "node": "기타 문서 분석 에이전트",
+            "type": "ai_languageModel",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Qdrant Vector Store6": {
+      "ai_tool": [
+        [
+          {
+            "node": "기타 문서 분석 에이전트",
+            "type": "ai_tool",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Upstage Embed for Agent6": {
+      "ai_embedding": [
+        [
+          {
+            "node": "Qdrant Vector Store6",
+            "type": "ai_embedding",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Upstage Solar Chat for Agent5": {
+      "ai_languageModel": [
+        [
+          {
+            "node": "주택 임대차 계약서 분석 에이전트",
+            "type": "ai_languageModel",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Qdrant Vector Store7": {
+      "ai_tool": [
+        [
+          {
+            "node": "주택 임대차 계약서 분석 에이전트",
+            "type": "ai_tool",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Upstage Embed for Agent7": {
+      "ai_embedding": [
+        [
+          {
+            "node": "Qdrant Vector Store7",
+            "type": "ai_embedding",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "HTML to PDF6": {
+      "main": [
+        [
+          {
+            "node": "Send a message8",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "전/월세 계약서 파일 업로드": {
+      "main": [
+        [
+          {
+            "node": "전/월세 계약서 다운",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "전/월세 계약서 다운": {
+      "main": [
+        [
+          {
+            "node": "문서판단을 위한 파싱",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "문서판단을 위한 파싱": {
+      "main": [
+        [
+          {
+            "node": "문서 종류 판단 에이전트",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "문서 종류 판단 에이전트": {
+      "main": [
+        [
+          {
+            "node": "문서 갈림길",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "문서 갈림길": {
+      "main": [
+        [
+          {
+            "node": "전/월세 관련 문서 민감정보 마스킹 및 처리",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "기타 문서 마스킹 및 처리",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "전/월세 관련 문서 민감정보 마스킹 및 처리": {
+      "main": [
+        [
+          {
+            "node": "주택 임대차 계약서 분석 에이전트",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "기타 문서 마스킹 및 처리": {
+      "main": [
+        [
+          {
+            "node": "기타 문서 분석 에이전트",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "구글 드라이브 n8n-hackaton-db2에서 필요 파일 모두 찾기": {
+      "main": [
+        [
+          {
+            "node": "파일 다운",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "파일 다운": {
+      "main": [
+        [
+          {
+            "node": "문서 파싱",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "문서 파싱": {
+      "main": [
+        [
+          {
+            "node": "Qdrant Vector Store4",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "HTML to PDF": {
+      "main": [
+        [
+          {
+            "node": "Send a message7",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "주택 임대차 계약서 분석 에이전트": {
+      "main": [
+        [
+          {
+            "node": "시각화 및 정제",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "기타 문서 분석 에이전트": {
+      "main": [
+        [
+          {
+            "node": "시각화 및 정제1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "시각화 및 정제": {
+      "main": [
+        [
+          {
+            "node": "HTML to PDF6",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "시각화 및 정제1": {
+      "main": [
+        [
+          {
+            "node": "HTML to PDF",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "active": true,
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "versionId": "6d137dbc-76c2-4e8e-bf59-3a51f3445455",
+  "meta": {
+    "templateCredsSetupCompleted": true,
+    "instanceId": "9b369fa03cbd0032d77344e1c2077b30ed11453425856194246318a442eb6f2c"
+  },
+  "id": "Elky24HJ3lKYZGzW",
+  "tags": []
+}
